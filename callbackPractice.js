@@ -25,6 +25,9 @@ and what you should write is the sayHi function that makes the code above work,
 
 
   //Code Here for first
+  function first(names, cb) {
+    cb(names[0]);
+  }
   
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -40,6 +43,10 @@ first(names, function(firstName){
 
 
   //Code Here for last
+    function last(names, cb) {
+    cb(names[(names.length - 1)]);
+  }
+
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -57,6 +64,9 @@ last(names, function(lastName){
 
 
   //Code Here for multiply
+  function multiply(num1, num2, cb) {
+    cb(num1 * num2);
+  }
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -73,6 +83,15 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
+  function contains(names, name, cb) {
+    // var result = !names.indexOf(name);
+    if (!names.indexOf(name) !== -1) {
+    cb(!names.indexOf(name));
+    }
+    else{
+      cb(false);
+    }
+  }
 
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -92,6 +111,18 @@ contains(names, 'Colt', function(result){
 
 
     //Code Here for uniq
+    function uniq(names, cb) {
+      var obj = {};
+      var uniqArray = [];
+      for (var i = 0; i < names.length; i++) {
+        obj[names[i]] = true;
+      }
+      for (var key in obj) {
+        uniqArray.push(key);
+      }
+      cb(uniqArray);
+    }
+
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -107,6 +138,11 @@ uniq(names, function(uniqArr){
 
 
     //Code Here for each
+    function each(names, cb) {
+      for (var i = 0; i < names.length; i++) {
+        cb(names[i], i);
+      }
+    }
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -123,6 +159,13 @@ each(names, function(item, indice){
 
 
  //code here for getUserById
+ function getUserById(users, idget, cb) {
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id === idget) {
+      cb(users[i]);
+    }
+  }
+ }
 
 var users = [
   {
